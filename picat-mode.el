@@ -34,9 +34,6 @@
     ;; attributes
     ;("/\\(?:\\sw\\|\\s_\\)+\\_>" . font-lock-variable-name-face)
     ;; control constructs
-    (,(picat-match-symbol
-       "if" "then" "else" "end" "loop" "while" "in" "foreach" "..")
-     . font-lock-keyword-face)
     ;; core functions (XXX some overlap with operators)
     (,(picat-match-symbol 
        "%" "*" "**" "+" "+" "-" "/" "<<" ">>" "abs" "append" "apply" "arity"
@@ -49,11 +46,12 @@
        "text" "to" "tree" "write" "~") . font-lock-builtin-face)
     )
   '("\\.pi$")                           ;file extension
-  '((lambda ()                          ;other setup work
-      (modify-syntax-entry ?' "\"")
-      (modify-syntax-entry ?: "(.")
-      (modify-syntax-entry ?\. "):")))
   "Major mode for editing picat-lang."
 )
 
+(setq indent-tabs-mode nil) 
+(setq tab-width 4)
+;(setq indent-line-function 'insert-tab)
+
 (provide 'picat-mode)
+
