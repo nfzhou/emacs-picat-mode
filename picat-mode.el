@@ -49,9 +49,15 @@
   "Major mode for editing picat-lang."
 )
 
-(setq indent-tabs-mode nil) 
-(setq tab-width 4)
+(electric-indent-mode -1)
+(global-set-key (kbd "TAB") 'self-insert-command)
+(global-set-key (kbd "RET") 'newline)
+(setq-default indent-tabs-mode nil)  ; Use spaces instead of tabs
+(setq-default tab-width 4)
+(global-set-key (kbd "TAB") (lambda () (interactive) (insert "    ")))
+
+;(setq indent-tabs-mode nil) 
+;(setq tab-width 4)
 ;(setq indent-line-function 'insert-tab)
 
 (provide 'picat-mode)
-
